@@ -43,17 +43,26 @@ export const Sidebar: React.FC<SidebarProps> = ({
         ${isOpen ? 'translate-x-0' : '-translate-x-full md:hidden'}
       `}>
         {/* Sidebar Header */}
-        <div className="p-4 flex flex-col gap-4">
+        <div className="p-4 flex flex-col gap-4 relative">
           <div className="flex items-center justify-between md:hidden">
             <span className="font-bold text-lg text-slate-200">Menu</span>
             <button onClick={onClose} className="p-2 text-slate-400 hover:text-white transition-colors">
               <i className="fa-solid fa-xmark text-lg"></i>
             </button>
           </div>
+          
+          {/* Desktop Close Button */}
+          <button 
+            onClick={onClose} 
+            className="hidden md:block absolute right-3 top-3 p-2 text-slate-600 hover:text-indigo-400 transition-colors z-10"
+            title="Collapse Sidebar"
+          >
+             <i className="fa-solid fa-angles-left"></i>
+          </button>
 
           <button 
             onClick={() => { onNewChat(); if (window.innerWidth < 768) onClose(); }}
-            className="w-full flex items-center justify-center gap-3 px-4 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl transition-all shadow-lg shadow-indigo-900/20 font-medium group border border-indigo-500/50"
+            className="w-full flex items-center justify-center gap-3 px-4 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl transition-all shadow-lg shadow-indigo-900/20 font-medium group border border-indigo-500/50 mt-2 md:mt-0"
           >
             <i className="fa-solid fa-plus transition-transform group-hover:rotate-90"></i> 
             New Chat
